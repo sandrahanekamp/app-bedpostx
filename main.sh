@@ -4,16 +4,16 @@
 #PBS -l vmem=16gb
 #PBS -V
 
-diff=`jq -r '.diff' config.json`;
-bvec=`jq -r '.bvec' config.json`;
-bval=`jq -r '.bval' config.json`;
+dwi=`jq -r '.dwi' config.json`;
+bvecs=`jq -r '.bvecs' config.json`;
+bvals=`jq -r '.bvals' config.json`;
 mask=`jq -r '.mask' config.json`;
 
 mkdir input_folder
 cp $mask input_folder/nodif_brain_mask.nii.gz
-cp $diff input_folder/data.nii.gz
-cp $bval input_folder/bvals
-cp $bvec input_folder/bvecs
+cp $dwi input_folder/data.nii.gz
+cp $bvals input_folder/bvals
+cp $bvecs input_folder/bvecs
 
 nf=`jq -r '.nf' config.json`;
 fudge=`jq -r '.fudge' config.json`;
