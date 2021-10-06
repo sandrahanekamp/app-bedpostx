@@ -4,7 +4,7 @@
 #PBS -l vmem=16gb
 #PBS -V
 
-export SINGULARITYENV_LD_LIBRARY_PATH=$CUDA91PATH/lib
+export SINGULARITYENV_LD_LIBRARY_PATH=$CUDA91PATH/lib64
 
 dwi=`jq -r '.dwi' config.json`;
 bvecs=`jq -r '.bvecs' config.json`;
