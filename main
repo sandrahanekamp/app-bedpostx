@@ -4,6 +4,9 @@
 #PBS -l vmem=16gb
 #PBS -V
 
+export SINGULARITYENV_SGE_ROOT=$CUDA91PATH
+export SINGULARITYENV_FSLGECUDAQ=1
+
 dwi=`jq -r '.dwi' config.json`;
 bvecs=`jq -r '.bvecs' config.json`;
 bvals=`jq -r '.bvals' config.json`;
