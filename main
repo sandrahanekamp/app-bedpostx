@@ -4,9 +4,6 @@
 #PBS -l vmem=16gb
 #PBS -V
 
-export SINGULARITYENV_SGE_ROOT=$CUDA91PATH
-export SINGULARITYENV_FSLGECUDAQ=1
-
 dwi=`jq -r '.dwi' config.json`;
 bvecs=`jq -r '.bvecs' config.json`;
 bvals=`jq -r '.bvals' config.json`;
@@ -22,8 +19,7 @@ nf=`jq -r '.nf' config.json`;
 fudge=`jq -r '.fudge' config.json`;
 bi=`jq -r '.bi' config.json`;
 
-time singularity exec -e docker://brainlife/fsl:6.0.1 bedpostx input_folder --nf=$nf --fudge=$fudge  --bi=$bi
-
+time singularity exec -e --nv docker://brainlife/fsl:6.0.1 bedpostx_gpu input_folder --nf=$nf --fudge=$fudge  --bi=$bi
 
 
 
