@@ -16,6 +16,7 @@ cp $mask input_folder/nodif_brain_mask.nii.gz
 cp $dwi input_folder/data.nii.gz
 cp $bvals input_folder/bvals
 cp $bvecs input_folder/bvecs
+mkdir -p output
 
 nf=`jq -r '.nf' config.json`;
 fudge=`jq -r '.fudge' config.json`;
