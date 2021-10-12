@@ -24,7 +24,7 @@ bi=`jq -r '.bi' config.json`;
 
 time singularity exec -e --nv docker://brainlife/fsl:6.0.1 bedpostx_gpu input_folder --nf=$nf --fudge=$fudge  --bi=$bi
 
-
+mv -v input_folder.bedpostx/* output
 
 
 
