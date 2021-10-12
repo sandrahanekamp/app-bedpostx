@@ -22,3 +22,6 @@ fudge=`jq -r '.fudge' config.json`;
 bi=`jq -r '.bi' config.json`;
 
 time singularity exec -e --nv docker://brainlife/fsl:6.0.1 bedpostx_gpu input_folder --nf=$nf --fudge=$fudge  --bi=$bi
+
+cp -R input_folder.bedpost/* ./output/output/
+chmod -R +rw ./output
