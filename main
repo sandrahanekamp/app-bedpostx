@@ -16,15 +16,9 @@ cp $mask input_folder/nodif_brain_mask.nii.gz
 cp $dwi input_folder/data.nii.gz
 cp $bvals input_folder/bvals
 cp $bvecs input_folder/bvecs
-mkdir -p output
 
 nf=`jq -r '.nf' config.json`;
 fudge=`jq -r '.fudge' config.json`;
 bi=`jq -r '.bi' config.json`;
 
 time singularity exec -e --nv docker://brainlife/fsl:6.0.1 bedpostx_gpu input_folder --nf=$nf --fudge=$fudge  --bi=$bi
-
-mv -v input_folder.bedpostx/* output
-
-
-
